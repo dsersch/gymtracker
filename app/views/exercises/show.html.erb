@@ -1,0 +1,23 @@
+<h1> <%= @exercise.name %></h1>
+<h2>Do Set:</h2>
+<%= form_for @result do |f| %>
+<%= f.label :reps, "Reps"%>
+<%= f.number_field :reps %>
+<%= f.label :weight, "Weight"%>
+<%= f.number_field :weight %>   
+<%= f.hidden_field :exercise_id, value: @exercise.id %>
+<%= f.submit %>
+<% end %>
+
+<h2>Results</h2>
+
+<%= line_chart @results.group(:created_at).sum(:weight), label: "Weight" %>
+<%= line_chart @results.group(:created_at).sum(:reps), label: "Reps"%>
+
+
+<ul>
+    <% @results.each do |l| %>
+    <li><%= l.reps %> reps at <%= l.weight %> lbs.</li>
+    <% end %>
+</ul>
+<%= link_to "Home", root_path %>

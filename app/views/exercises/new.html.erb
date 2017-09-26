@@ -1,0 +1,10 @@
+<h1>New Exercise</h1>
+<%= form_for @exercise do |f| %>
+<%= f.label :name, "Name" %>
+<%= f.text_field :name %>
+<%= f.label :sets, "Sets" %>
+<%= f.number_field :sets %>
+<%= f.label :workout_id, "Workout ID" %>
+<%= f.number_field :workout_id %>
+<%= f.submit %>
+<% end %>

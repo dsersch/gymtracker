@@ -2,6 +2,16 @@
 <%= link_to "Edit Workout", edit_workout_path(@workout) %>
 <%= link_to "Add Exercise", new_exercise_path %>
 
+<h1>New Exercise</h1>
+<%= form_for @exercise do |f| %>
+<%= f.label :name, "Name" %>
+<%= f.text_field :name %>
+<%= f.label :sets, "Sets" %>
+<%= f.number_field :sets %>
+<%= f.hidden_field :workout_id, value: @workout.id %>
+<%= f.submit %>
+<% end %>
+
 <ul>
     <% @exercises.each do |l| %>
     <li><%= link_to l.name, exercise_path(l.id) %> : <%= l.sets %> sets</li>

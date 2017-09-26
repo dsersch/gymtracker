@@ -4,6 +4,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+# chartkick gem
+gem "chartkick"
 # bootsrap gem
 gem 'bootstrap', '~> 4.0.0.beta'
 # jQuery rails gem
