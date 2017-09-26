@@ -1,0 +1,9 @@
+<h1><%= @workout.name %></h1>
+<%= link_to "Edit Workout", edit_workout_path(@workout) %>
+<%= link_to "Add Exercise", new_exercise_path %>
+
+<ul>
+    <% @exercises.each do |l| %>
+    <li><%= link_to l.name, exercise_path(l.id) %> : <%= l.sets %> sets</li>
+    <% end %>
+</ul>

@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: [:show, :edit, :update, :destroy]
+
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
+    @workouts = Workout.where(user_id: @user.id)
   end
 
   def new
@@ -23,12 +26,28 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
+    @user = current_user
+    if @user.update(user_params)
+      flash[:info] = "Account updated."
+      redirect_to user_path
+    else
+      redirect_to edit_user_path
+    end
   end
 
   def destroy
+    if current_user.destroy
+      session[:user_id] = nil
+      flash[:danger] = "Account deleted."
+      redirect_to new_user_path
+    else
+      flash[:danger] = "Delete failed."
+      redirect_to edit_user_path
+    end
   end
   
   private
