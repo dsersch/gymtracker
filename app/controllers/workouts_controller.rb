@@ -35,10 +35,17 @@ class WorkoutsController < ApplicationController
 
   def destroy
     @workout = Workout.find(params[:id])
+    @exercises = Exercise.where(workout_id: @workout.id)
+    @exercises.each do |e|
+      @results = Result.where(exercise_id: e.id)
+      @results.destroy_all
+    end
+    @exercises.destroy_all
     if @workout.destroy
-      redirect_to root_path
+      flash[:warning] = "Workout Deleted."
+      redirect_to user_path(current_user)
     else
-      redirect_to edit_workout_path(@workout)
+      redirect_to workout_path(@workout)
     end
   end
 

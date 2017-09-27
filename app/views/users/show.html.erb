@@ -1,5 +1,7 @@
 <h1><%= @user.name %></h1>
 <%= link_to "Add Workout", new_workout_path %>
+<%= link_to "Edit Profile", edit_user_path(@user) %>
+
 <h3>Workouts</h3>
 <ul>
     <% @workouts.each do |l| %>
@@ -7,5 +9,3 @@
     <% end %>
 </ul>
 
-<%= link_to "Edit", edit_user_path(@user) %>
-<%= link_to "Home", root_path %>

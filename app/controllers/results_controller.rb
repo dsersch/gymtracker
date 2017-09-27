@@ -14,7 +14,8 @@ class ResultsController < ApplicationController
     if @result.save
       redirect_to exercise_path(@result.exercise_id)
     else
-      redirect_to root_path
+      flash[:warning] = "Failed to Add."
+      redirect_to exercise_path(@result.exercise_id)
     end
   end
 

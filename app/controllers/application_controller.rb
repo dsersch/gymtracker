@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path unless logged_in?
     end
   end
+
+  def delete_all array
+    array.each do |i|
+      i.destroy
+    end
+  end
 end

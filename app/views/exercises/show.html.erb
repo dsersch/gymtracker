@@ -1,23 +1,45 @@
 <h1> <%= @exercise.name %></h1>
-<h2>Do Set:</h2>
-<%= form_for @result do |f| %>
-<%= f.label :reps, "Reps"%>
-<%= f.number_field :reps %>
-<%= f.label :weight, "Weight"%>
-<%= f.number_field :weight %>   
-<%= f.hidden_field :exercise_id, value: @exercise.id %>
-<%= f.submit %>
-<% end %>
+<%= link_to "Back", workout_path(@exercise.workout_id) %>
+<%= link_to "Delete", exercise_path(@exercise), method: "delete" %>
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#resultForm" aria-expanded="false" aria-controls="resultForm">Do Set</button>
+</p>
+<div class="collapse" id="resultForm">
+    <div class="card card-body">
+        <%= form_for @result do |f| %>
+        <%= f.label :reps, "Reps"%>
+        <%= f.number_field :reps %>
+        <%= f.label :weight, "Weight"%>
+        <%= f.number_field :weight %>   
+        <%= f.hidden_field :exercise_id, value: @exercise.id %>
+        <%= f.submit %>
+        <% end %>
+    </div>
+</div>
 
-<h2>Results</h2>
+<h2>History:</h2>
+<div id="resultsAccordion" data-children=".item">
+    <div class="item">
+        <a data-toggle="collapse" data-parent="#resultsAccordion" href="#weight" aria-expanded="true" aria-controls="weight">Weight</a>
+        <div id="weight" class="collapse show" role="tabpanel">
+            <p class="mb-3">
+                <%= line_chart @results.group(:id).sum(:weight) %>
+            </p>
+        </div>
+        </div>
+    <div class="item">
+        <a data-toggle="collapse" data-parent="#resultsAccordion" href="#reps" aria-expanded="false" aria-controls="reps">Reps</a>
+        <div id="reps" class="collapse" role="tabpanel">
+            <p class="mb-3">
+                <%= line_chart @results.group(:id).sum(:reps) %>       
+            </p>
+        </div>
+    </div>
+</div>
 
-<%= line_chart @results.group(:created_at).sum(:weight), label: "Weight" %>
-<%= line_chart @results.group(:created_at).sum(:reps), label: "Reps"%>
-
-
+<h2>Results:</h2>
 <ul>
     <% @results.each do |l| %>
     <li><%= l.reps %> reps at <%= l.weight %> lbs.</li>
     <% end %>
 </ul>
-<%= link_to "Home", root_path %>

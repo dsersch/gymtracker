@@ -39,6 +39,8 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise = Exercise.find(params[:id])
+    @results = Result.where(exercise_id: @exercise.id)
+    @results.destroy_all
     if @exercise.destroy
       redirect_to root_path
     else

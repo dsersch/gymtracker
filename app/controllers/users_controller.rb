@@ -40,10 +40,20 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @workouts = Workout.where(user_id: current_user.id)
+    @workouts.each do |w|
+      @exercises = Exercise.where(workout_id: w.id)
+      @exercises.each do |e|
+        @results = Result.where(exercise_id: e.id)
+        @results.destroy_all
+      end
+      @exercises.destroy_all
+    end
+    @workouts.destroy_all
     if current_user.destroy
       session[:user_id] = nil
       flash[:danger] = "Account deleted."
-      redirect_to new_user_path
+      redirect_to new_session_path
     else
       flash[:danger] = "Delete failed."
       redirect_to edit_user_path
