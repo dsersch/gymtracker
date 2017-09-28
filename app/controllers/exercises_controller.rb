@@ -18,8 +18,10 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
+      flash[:success] = "Exercise Added."
       redirect_to workout_path(@exercise.workout_id)
     else
+      flash[:danger] = "Failed to Add Exercise."
       redirect_to workout_path(@exercise.workout_id)
     end
   end
@@ -39,11 +41,14 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise = Exercise.find(params[:id])
+    @workout = Workout.find(@exercise.workout_id)
     @results = Result.where(exercise_id: @exercise.id)
     @results.destroy_all
     if @exercise.destroy
-      redirect_to root_path
+      flash[:warning] = "Exercise Deleted."
+      redirect_to edit_workout_path(@workout)
     else
+      flash[:danger] = "Delete Failed."
       redirect_to edit_exercise_path
     end
   end

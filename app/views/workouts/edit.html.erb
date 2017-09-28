@@ -1,11 +1,19 @@
 <h1>Edit Workout</h1>
-<%= link_to "Delete", workout_path(@workout), method: "delete" %>
+
 <%= form_for @workout do |f| %>
-<%= f.label :name, "Name" %>
+<%= f.label :name, "Name:" %>
 <%= f.text_field :name %>
-<%= f.label :user_id, "User ID" %>
-<%= f.number_field :user_id %>
-<%= f.submit %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.submit "Update", class: "btn btn-primary btn-sm" %>
 <% end %>
 
-<%# link_to "Delete", exercise_path(@exercise), method: "delete" %>
+
+<h3>Exercises:</h3>
+<ul>
+    <% @exercises.each do |l| %>
+    <li><%= l.name %> <a class="btn btn-danger btn-sm" href="/erercises/<%= l.id %>/edit" role="button"><%= fa_icon "times"%></a>
+    </li>
+    <% end %>
+</ul>
+
+<a class="btn btn-primary" href="/workouts/<%= @workout.id %>" role="button">Delete Workout</a>

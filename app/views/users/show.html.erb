@@ -1,8 +1,24 @@
 <h1><%= @user.name %></h1>
+<h3>Weight History:</h3>
+<%= line_chart @weights.group(:id).sum(:weight) %>
+
+
 <div class="btn-group" role="group" aria-label="Basic example">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#workoutForm" aria-expanded="false" aria-controls="workoutForm">Add Workout</button>
     <a class="btn btn-primary" href="/users/<%= @user.id%>/edit" role="button">Edit Profile</a>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#weightForm" aria-expanded="false" aria-controls="weightForm">Update Weight</button>
 </div>
+<div class="collapse" id="weightForm">
+    <div class="card card-body">
+        <%= form_for @weight do |f| %>
+        <%= f.label :weight, "New Weight:"%>
+        <%= f.number_field :weight%>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit %>
+        <%end %>
+    </div>
+</div>
+
 
 <div class="collapse" id="workoutForm">
     <div class="card card-body">
@@ -14,6 +30,7 @@
         <% end %>
     </div>
 </div>
+
 <h3>Workouts</h3>
 <ul>
     <% @workouts.each do |l| %>

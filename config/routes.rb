@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :workouts, except: [:index]
   resources :exercises, except: [:index]
   resources :results, only: [:new, :create, :show, :destroy]
+  resources :weights, except: [:index, :show]
 end

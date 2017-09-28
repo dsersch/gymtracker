@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @user = current_user
     @workouts = Workout.where(user_id: @user.id)
     @workout = Workout.new
+    @weights = Weight.where(user_id: @user.id)
+    @weight = Weight.new
   end
 
   def new
