@@ -22,7 +22,7 @@
 <div id="resultsAccordion" data-children=".item">
     <div class="item">
         <a class="btn btn-primary" data-toggle="collapse" data-parent="#resultsAccordion" href="#weight" aria-expanded="true" aria-controls="weight">Weight</a>
-        <div id="weight" class="collapse show" role="tabpanel">
+        <div id="weight" class="collapse" role="tabpanel">
             <p class="mb-3">
                 <%= line_chart @results.group(:id).sum(:weight) %>
             </p>
@@ -39,8 +39,8 @@
 </div>
 
 <h2>Results:</h2>
-<ul>
+<div class="list-group">
     <% @results.each do |l| %>
-    <li><%= l.reps %> reps at <%= l.weight %> lbs.</li>
+    <li class="list-group-item list-group-item-primary"><%= l.reps %> at <%= l.weight %> lbs.</li>
     <% end %>
-</ul>
+</div>

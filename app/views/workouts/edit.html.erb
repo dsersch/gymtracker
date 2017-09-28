@@ -11,9 +11,10 @@
 <h3>Exercises:</h3>
 <ul>
     <% @exercises.each do |l| %>
-    <li><%= l.name %> <a class="btn btn-danger btn-sm" href="/erercises/<%= l.id %>/edit" role="button"><%= fa_icon "times"%></a>
-    </li>
+    <li><%= l.name %> <%= link_to (fa_icon "times"), exercise_path(l.id), method: "delete" %></li>
     <% end %>
 </ul>
 
-<a class="btn btn-primary" href="/workouts/<%= @workout.id %>" role="button">Delete Workout</a>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to "Delete Workout", workout_path(@workout), method: "delete", class: "btn btn-primary"%>
+</div>
