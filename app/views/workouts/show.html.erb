@@ -1,7 +1,7 @@
 <h1><%= @workout.name %></h1>
 <div class="btn-group" role="group" aria-label="Basic example">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#resultForm" aria-expanded="false" aria-controls="resultForm">Add Exercise</button>
-    <a class="btn btn-primary" href="/workouts/<%= @workout.id%>/edit" role="button">Edit</a>
+    <a class="btn btn-primary" href="/workouts/<%= @workout.id%>/edit" role="button">Edit Workout</a>
     <a class="btn btn-primary" href="/users/<%= current_user.id%>" role="button">Back</a>
 </div>
 

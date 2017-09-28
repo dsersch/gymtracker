@@ -1,9 +1,10 @@
 <h1> <%= @exercise.name %></h1>
-<%= link_to "Back", workout_path(@exercise.workout_id) %>
-<%= link_to "Delete", exercise_path(@exercise), method: "delete" %>
-<p>
+
+<div class="btn-group" role="group" aria-label="Basic example">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#resultForm" aria-expanded="false" aria-controls="resultForm">Do Set</button>
-</p>
+    <a class="btn btn-primary" href="/workouts/<%= @exercise.workout_id%>" role="button">Back</a>
+</div>
+
 <div class="collapse" id="resultForm">
     <div class="card card-body">
         <%= form_for @result do |f| %>
@@ -20,7 +21,7 @@
 <h2>History:</h2>
 <div id="resultsAccordion" data-children=".item">
     <div class="item">
-        <a data-toggle="collapse" data-parent="#resultsAccordion" href="#weight" aria-expanded="true" aria-controls="weight">Weight</a>
+        <a class="btn btn-primary" data-toggle="collapse" data-parent="#resultsAccordion" href="#weight" aria-expanded="true" aria-controls="weight">Weight</a>
         <div id="weight" class="collapse show" role="tabpanel">
             <p class="mb-3">
                 <%= line_chart @results.group(:id).sum(:weight) %>
@@ -28,7 +29,7 @@
         </div>
         </div>
     <div class="item">
-        <a data-toggle="collapse" data-parent="#resultsAccordion" href="#reps" aria-expanded="false" aria-controls="reps">Reps</a>
+        <a class="btn btn-primary" data-toggle="collapse" data-parent="#resultsAccordion" href="#reps" aria-expanded="false" aria-controls="reps">Reps</a>
         <div id="reps" class="collapse" role="tabpanel">
             <p class="mb-3">
                 <%= line_chart @results.group(:id).sum(:reps) %>       

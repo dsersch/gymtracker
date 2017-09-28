@@ -14,14 +14,17 @@ class WorkoutsController < ApplicationController
   def create
     @workout = Workout.new(workout_params)
     if @workout.save
-      redirect_to workout_path(@workout)
-    else 
-      redirect_to new_workout_path
+      flash[:success] = "Workout Created"
+      redirect_to user_path(current_user)
+    else
+      flash[:warning] = "Please complete all fields." 
+      redirect_to user_path(current_user)
     end
   end
 
   def edit
     @workout = Workout.find(params[:id])
+    @exercises = Exercise.where(workout_id: @workout.id)
   end
 
   def update
