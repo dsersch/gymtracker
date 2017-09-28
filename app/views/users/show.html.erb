@@ -1,33 +1,47 @@
 <h1><%= @user.name %></h1>
-<h3>Weight History:</h3>
-<%= line_chart @weights.group(:id).sum(:weight), min: @weights.minimum('weight') -25, max: @weights.maximum('weight') + 25 %>
 
 
 <div class="btn-group" role="group" aria-label="Basic example">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#workoutForm" aria-expanded="false" aria-controls="workoutForm">Add Workout</button>
-    <a class="btn btn-primary" href="/users/<%= @user.id%>/edit" role="button">Edit Profile</a>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#weightTable" aria-expanded="false" aria-controls="weightTable">Weight History</button>
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#weightForm" aria-expanded="false" aria-controls="weightForm">Update Weight</button>
 </div>
+
 <div class="collapse" id="weightForm">
     <div class="card card-body">
         <%= form_for @weight do |f| %>
-        <%= f.label :weight, "New Weight:"%>
-        <%= f.number_field :weight%>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit %>
+        <div class="form-row">
+            <div class="col-md-2">
+            <%= f.number_field :weight, placeholder: "New Weight", class: "form-control" %>
+            </div>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <div class="col-md-2">
+            <%= f.submit "Update", class: "btn btn-primary form-control" %>
+            </div>
+        </div>
         <%end %>
     </div>
 </div>
 
-
 <div class="collapse" id="workoutForm">
     <div class="card card-body">
         <%= form_for @workout do |f| %>
-        <%= f.label :name, "Name" %>
-        <%= f.text_field :name %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit %>
+        <div class="form-row">
+            <div class="col-md-3">
+            <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+            </div>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <div class="col-md-2">
+            <%= f.submit "Add", class: "btn btn-primary form-control" %>
+            </div>
+        </div>
         <% end %>
+    </div>
+</div>
+
+<div class="collapse" id="weightTable">
+    <div class="card card-body">
+        <%= line_chart @weights.group(:id).sum(:weight), min: @weights.minimum('weight') -25, max: @weights.maximum('weight') + 25 %>
     </div>
 </div>
 

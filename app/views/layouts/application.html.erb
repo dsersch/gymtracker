@@ -8,13 +8,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="container">
+  <body>    
       <% if logged_in? %>
       <%= link_to 'Log Out', logout_path, method: 'delete' %>
       <%= link_to current_user.name, user_path(current_user) %>
+      <%= link_to (fa_icon "pencil"), edit_user_path(@user) %>
       <% else %>
       <%= link_to 'Log In', new_session_path %>
+      <%= link_to 'Sign Up', new_user_path %>
       <% end %>
 
       <% flash.each do |key, value| %>
@@ -25,8 +26,10 @@
             <%= value %>
         </div>
       <% end %>
-
+      <div class="container">
     <%= yield %>
     </div>
   </body>
 </html>
+<%# render 'layouts/partials/navbar' %>
+<%# render 'layouts/partials/flash' %>

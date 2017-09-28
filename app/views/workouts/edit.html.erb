@@ -1,20 +1,29 @@
 <h1>Edit Workout</h1>
 
-<%= form_for @workout do |f| %>
-<%= f.label :name, "Name:" %>
-<%= f.text_field :name %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.submit "Update", class: "btn btn-primary btn-sm" %>
-<% end %>
-
-
-<h3>Exercises:</h3>
-<ul>
-    <% @exercises.each do |l| %>
-    <li><%= l.name %> <%= link_to (fa_icon "times"), exercise_path(l.id), method: "delete" %></li>
-    <% end %>
-</ul>
-
 <div class="btn-group" role="group" aria-label="Basic example">
-    <%= link_to "Delete Workout", workout_path(@workout), method: "delete", class: "btn btn-primary"%>
+        <%= link_to "Delete Workout", workout_path(@workout), method: "delete", class: "btn btn-primary"%>
+        <%= link_to "Back", workout_path(@workout), class: "btn btn-primary" %>
+    </div>
+<h3>Edit Name</h3>
+<form>
+    <%= form_for @workout do |f| %>
+    <div class="form-row">
+        <div class="col-md-3">
+        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        </div>
+        
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class="col-md-2">
+        <%= f.submit "Update Name", class: "btn btn-primary form-control" %>
+        </div>
+        <% end %>
+    </div>
+</form>
+
+
+<h3>Remove Exercises</h3>
+<div class="list-group">
+    <% @exercises.each do |l| %>
+    <li class="list-group-item list-group-item-primary"><%= l.name %> <%= link_to (fa_icon "times"), exercise_path(l.id), method: "delete" %></li>
+    <% end %>
 </div>

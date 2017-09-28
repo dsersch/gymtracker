@@ -1,8 +1,27 @@
 <h1>Edit User</h1>
-<%= link_to "Back", user_path(@user) %>
-<%= link_to "Delete User", user_path(@user), method: "delete" %>
+
+<div class="btn-group">
+<%= link_to "Back", user_path(@user), class: "btn btn-primary" %>
+<%= link_to "Delete User", user_path(@user), method: "delete", class: "btn btn-primary" %>
+</div>
 <%= form_for @user do |f| %>
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+<form>
+    <div class="form-group">
+        <%= f.label :name, 'Name' %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :email, 'Email'%>
+        <%= f.text_field :email, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :password, 'Password'%>
+        <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :password_confirmation, 'Confirm Password' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+    <%= f.submit 'Update Account', class: 'btn btn-primary' %>
+</form>
 <% end %>

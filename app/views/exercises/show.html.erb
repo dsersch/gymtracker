@@ -8,13 +8,19 @@
 <div class="collapse" id="resultForm">
     <div class="card card-body">
         <%= form_for @result do |f| %>
-        <%= f.label :reps, "Reps"%>
-        <%= f.number_field :reps %>
-        <%= f.label :weight, "Weight"%>
-        <%= f.number_field :weight %>   
-        <%= f.hidden_field :exercise_id, value: @exercise.id %>
-        <%= f.submit %>
-        <% end %>
+        <div class="form-row">
+            <div class="col-md-2">
+            <%= f.number_field :reps, placeholder: "Reps", class: "form-control" %>
+            </div>
+            <div class="col-md-2">
+            <%= f.number_field :weight, placeholder: "Weight", class: "form-control" %> 
+            </div>
+            <%= f.hidden_field :exercise_id, value: @exercise.id %>
+            <div class="col-md-2">
+            <%= f.submit "Add", class: "btn btn-primary form-control" %>
+            </div>
+            <% end %>
+        </div>
     </div>
 </div>
 
