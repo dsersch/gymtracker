@@ -41,7 +41,7 @@
 
 <div class="collapse" id="weightTable">
     <div class="card card-body">
-        <%= line_chart @weights.group(:id).sum(:weight), min: @weights.minimum('weight') -25, max: @weights.maximum('weight') + 25 %>
+        <%= line_chart @weights.group(:id).sum(:weight), min: @weights.minimum('weight') -25, max: @weights.maximum('weight') + 25, colors: ["#49FEBD"] %>
     </div>
 </div>
 

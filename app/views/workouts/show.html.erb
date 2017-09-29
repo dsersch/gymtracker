@@ -26,6 +26,6 @@
 <h3>Exercises:</h3>
 <div class="list-group">
     <% @exercises.each do |l| %>
-    <a href="<%= exercise_path(l.id) %>" class="list-group-item list-group-item-action list-group-item-primary"><%= l.name %> : <%= l.sets %> Sets</a> 
+    <a href="<%= exercise_path(l.id) %>" class="list-group-item list-group-item-action list-group-item-dark"><%= l.name %> : <%= l.sets %> Sets</a> 
     <% end %>
 </div>

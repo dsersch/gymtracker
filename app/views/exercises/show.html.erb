@@ -30,7 +30,9 @@
         <a class="btn btn-primary" data-toggle="collapse" data-parent="#resultsAccordion" href="#weight" aria-expanded="true" aria-controls="weight">Weight</a>
         <div id="weight" class="collapse" role="tabpanel">
             <p class="mb-3">
-                <%= line_chart @results.group(:id).sum(:weight) %>
+                <div class="card">
+                <%= line_chart @results.group(:id).sum(:weight), colors: ["#49FEBD"] %>
+                </div>
             </p>
         </div>
         </div>
@@ -38,7 +40,9 @@
         <a class="btn btn-primary" data-toggle="collapse" data-parent="#resultsAccordion" href="#reps" aria-expanded="false" aria-controls="reps">Reps</a>
         <div id="reps" class="collapse" role="tabpanel">
             <p class="mb-3">
-                <%= line_chart @results.group(:id).sum(:reps) %>       
+                <div class="card">
+                <%= line_chart @results.group(:id).sum(:reps), colors: ["#49FEBD"] %> 
+                </div>      
             </p>
         </div>
     </div>
