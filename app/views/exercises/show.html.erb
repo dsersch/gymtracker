@@ -31,7 +31,7 @@
         <div id="weight" class="collapse" role="tabpanel">
             <p class="mb-3">
                 <div class="card">
-                <%= line_chart @results.group(:id).sum(:weight), colors: ["#49FEBD"] %>
+                <%= area_chart @results.group(:id).sum(:weight), colors: ["#49FEBD"] %>
                 </div>
             </p>
         </div>
@@ -41,7 +41,7 @@
         <div id="reps" class="collapse" role="tabpanel">
             <p class="mb-3">
                 <div class="card">
-                <%= line_chart @results.group(:id).sum(:reps), colors: ["#49FEBD"] %> 
+                <%= area_chart @results.group(:id).sum(:reps), colors: ["#49FEBD"] %> 
                 </div>      
             </p>
         </div>

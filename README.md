@@ -1,24 +1,43 @@
-# README
+## GymTracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+GymTracker is a personal exercise log. It allows you to organize exercises into workout routines and lets you track you progress on each exercise with graphs.
 
-Things you may want to cover:
+Try it out [Here](https://tranquil-depths-56039.herokuapp.com/)
 
-* Ruby version
+## How To Use
+To begin, click the sign up button and provide your name, email, and a password. Next add your current weight so you can began tracking your progress. On your profile, you can create a new workout category, and keep track of all of the routines you have created. When you choose a workout, your brought to it's list of exercises. Here you can add exercises and edit the workout to change it's name or remove exercises from it. By selecting an exercise, you will be able to track doing a set and see your history with that exercise.
 
-* System dependencies
+## Technologies Used
+- Ruby on Rails
+- PostgreSQL
+- Bootstrap
+- Chartkick
+- Font Awesome
+- jQuery-rails
+- HTML and CSS
 
-* Configuration
+## User Stories
+I tracked my user stories and progress with Trello. You can view the project timeline [here](https://trello.com/b/UhKLOflC/work-out-app).
 
-* Database creation
+## Data Model
 
-* Database initialization
+![img](app/assets/images/data_model.png)
 
-* How to run the test suite
+## Up Next
+- First up would be the option to track other types of exercises like cardio or class workouts like yoga or spin.
+- A timer for cardio and workouts, and maybe a run tracker.
+- I would also like to add a social aspect where users can share their workouts and get ideas from other users.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Issues
+- chart x axis labels display id info of the database model.
+- desktop view is pretty boring.
 
-* Deployment instructions
+## Shout Outs
 
-* ...
+- The creators of Rails
+- The authors of the gems used
+	- Bootstrap
+	- Chartkick
+	- Font Awesome
+	- jQuery-rails
+- My instructors and classmates for there help along the way.
