@@ -1,9 +1,0 @@
-<h1>Edit Exercise</h1>
-<%= link_to "Delete Exercise", exercise_path(@exercise), method: 'delete' %>
-<%= form_for @exercise do |f| %>
-<%= f.label :name, "Name" %>
-<%= f.text_field :name %>
-<%= f.label :workout_id, "Workout ID" %>
-<%= f.number_field :workout_id %>
-<%= f.submit %>
-<% end %>

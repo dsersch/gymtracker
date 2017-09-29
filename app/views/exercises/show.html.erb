@@ -54,7 +54,8 @@
 <% else %>
 <div class="list-group">
     <% @results.each do |l| %>
-    <li class="list-group-item list-group-item-dark"><%= l.reps %> at <%= l.weight %> lbs.</li>
+    <li class="list-group-item list-group-item-dark"><%= l.reps %> at <%= l.weight %> lbs.
+         <%= time_ago_in_words l.created_at %> ago</li>
     <% end %>
 </div>
 <% end %>

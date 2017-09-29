@@ -23,6 +23,11 @@ I tracked my user stories and progress with Trello. You can view the project tim
 
 ![img](app/assets/images/data_model.png)
 
+## Wireframe
+This is the basic layout of the app.
+
+![img](app/assets/images/wireframe.png)
+
 ## Up Next
 - First up would be the option to track other types of exercises like cardio or class workouts like yoga or spin.
 - A timer for cardio and workouts, and maybe a run tracker.
@@ -30,6 +35,7 @@ I tracked my user stories and progress with Trello. You can view the project tim
 
 ## Issues
 - chart x axis labels display id info of the database model.
+- remove unused views and routes.
 - desktop view is pretty boring.
 
 ## Shout Outs
