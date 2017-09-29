@@ -24,8 +24,12 @@
     </div>
 </div>
 <h3>Exercises:</h3>
+<% if @workout.exercises.count == 0 %>
+<p class="list-group-item list-group-item-dark">No exercises yet.</p>
+<% else %>
 <div class="list-group">
     <% @exercises.each do |l| %>
     <a href="<%= exercise_path(l.id) %>" class="list-group-item list-group-item-action list-group-item-dark"><%= l.name %> : <%= l.sets %> Sets</a> 
     <% end %>
 </div>
+<% end %>

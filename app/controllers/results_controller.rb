@@ -12,9 +12,10 @@ class ResultsController < ApplicationController
   def create
     @result = Result.new(result_params)
     if @result.save
+      flash[:success] = "Results Added."
       redirect_to exercise_path(@result.exercise_id)
     else
-      flash[:warning] = "Failed to Add."
+      flash[:success] = "Failed to Add."
       redirect_to exercise_path(@result.exercise_id)
     end
   end

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless logged_in?
-      flash[:danger] = "Must be logged in for that."
+      flash[:success] = "Must be logged in for that."
       redirect_to new_session_path unless logged_in?
     end
   end

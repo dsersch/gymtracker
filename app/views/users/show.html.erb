@@ -46,8 +46,12 @@
 </div>
 
 <h3>Workouts:</h3>
+<% if @user.workouts.count == 0 %>
+    <p class="list-group-item list-group-item-dark">No workouts created.</p>
+<% else %>
 <div class="list-group">
     <% @workouts.each do |l| %>
     <a href="<%= workout_path(l.id) %>" class="list-group-item list-group-item-action list-group-item-dark"><%= l.name %></a>    
     <% end %>
 </div>
+<% end %>

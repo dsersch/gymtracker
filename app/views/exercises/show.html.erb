@@ -49,8 +49,12 @@
 </div>
 
 <h2>Results:</h2>
+<% if @exercise.results.count == 0 %>
+<p class="list-group-item list-group-item-dark">No results yet.</p>
+<% else %>
 <div class="list-group">
     <% @results.each do |l| %>
     <li class="list-group-item list-group-item-dark"><%= l.reps %> at <%= l.weight %> lbs.</li>
     <% end %>
 </div>
+<% end %>

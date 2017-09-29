@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to new_weight_path(@user)
     else
-      flash[:warning] = "Please complete all fields."
+      flash[:success] = "Please complete all fields."
       redirect_to new_user_path
     end
   end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:info] = "Account updated."
+      flash[:success] = "Account updated."
       redirect_to user_path
     else
       redirect_to edit_user_path
@@ -55,10 +55,10 @@ class UsersController < ApplicationController
     @workouts.destroy_all
     if current_user.destroy
       session[:user_id] = nil
-      flash[:danger] = "Account deleted."
+      flash[:success] = "Account deleted."
       redirect_to new_session_path
     else
-      flash[:danger] = "Delete failed."
+      flash[:success] = "Delete failed."
       redirect_to edit_user_path
     end
   end

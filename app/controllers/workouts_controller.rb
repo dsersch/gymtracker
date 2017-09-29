@@ -45,7 +45,7 @@ class WorkoutsController < ApplicationController
     end
     @exercises.destroy_all
     if @workout.destroy
-      flash[:warning] = "Workout Deleted."
+      flash[:success] = "Workout Deleted."
       redirect_to user_path(current_user)
     else
       redirect_to workout_path(@workout)
