@@ -1,2 +1,21 @@
 @import "font-awesome";
 @import "bootstrap";
+
+body {
+    background-image: url("/assets/gymbackground.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.btn-primary {
+    background: #3cd29c;
+    border-color: #3cd29c;
+    &:hover, &:active {
+      background:  #2FA97D;
+      border-color: #2FA97D;
+    }
+}
+
+.card {
+    background: #BCBCBC;
+}
+

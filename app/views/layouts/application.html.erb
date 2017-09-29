@@ -3,33 +3,18 @@
   <head>
     <title>GymTracker</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>    
-      <% if logged_in? %>
-      <%= link_to 'Log Out', logout_path, method: 'delete' %>
-      <%= link_to current_user.name, user_path(current_user) %>
-      <%= link_to (fa_icon "pencil"), edit_user_path(@user) %>
-      <% else %>
-      <%= link_to 'Log In', new_session_path %>
-      <%= link_to 'Sign Up', new_user_path %>
-      <% end %>
-
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <%= value %>
-        </div>
-      <% end %>
-      <div class="container">
-    <%= yield %>
+  <body>  
+    <%= render 'layouts/partials/navbar' %>  
+    <%= render 'layouts/partials/flash' %>
+      
+    <div class="container mx-auto">
+      <%= yield %>
     </div>
   </body>
 </html>
-<%# render 'layouts/partials/navbar' %>
-<%# render 'layouts/partials/flash' %>
+
