@@ -2,9 +2,11 @@
 @import "bootstrap";
 
 body {
-    background-image: url("/assets/gymbackground.jpeg");
+    background: #3C3C3C;
+   
     background-size: cover;
     background-repeat: no-repeat;
+    color: white;
 }
 .btn-primary {
     background: #3cd29c;
@@ -16,6 +18,6 @@ body {
 }
 
 .card {
-    background: #BCBCBC;
+    background: #CFCFCF;
 }
 

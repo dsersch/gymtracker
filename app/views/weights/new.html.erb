@@ -1,2 +1,17 @@
-<h1>Weights#new</h1>
-<p>Find me in app/views/weights/new.html.erb</p>
+<h1>Add Your Weight</h1>
+
+<%= form_for @weight do |f| %>
+<form>
+    <div class="form-row">
+        <div class="col-md-2">
+        <%= f.number_field :weight, placeholder: "Weight", class: "form-control" %>
+        </div>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class="col-md-1">
+        <%= f.submit "Add", class: "btn btn-primary form-control" %>
+        </div>
+    </div>
+    <% end %>
+</form>
+
+
